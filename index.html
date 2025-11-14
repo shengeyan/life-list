@@ -55,7 +55,7 @@
             position: relative;
         }
 
-        .item:hover {
+        .item:hover:not(.selected) {
             background-color: #e8f4fd;
             color: #2980b9;
         }
@@ -64,6 +64,10 @@
             background-color: #3498db;
             color: white;
             font-weight: 500;
+        }
+
+        .item.selected:hover {
+            background-color: #2980b9;
         }
 
         .export-section {
