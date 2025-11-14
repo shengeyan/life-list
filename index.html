@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>人生已完成清单</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px 10px;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .content {
+            font-size: 14px;
+            color: #34495e;
+            line-height: 1.8;
+            text-align: justify;
+            letter-spacing: 0.3px;
+        }
+
+        .item {
+            display: inline;
+            cursor: pointer;
+            padding: 2px 4px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .item:hover {
+            background-color: #e8f4fd;
+            color: #2980b9;
+        }
+
+        .item.selected {
+            background-color: #3498db;
+            color: white;
+            font-weight: 500;
+        }
+
+        .export-section {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #ecf0f1;
+        }
+
+        .export-btn {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .export-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+        }
+
+        .export-btn:active {
+            transform: translateY(0);
+        }
+
+        .stats {
+            text-align: center;
+            margin-top: 10px;
+            color: #7f8c8d;
+            font-size: 12px;
+        }
+
+        /* 手机端适配 */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px 5px;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+            
+            .title {
+                font-size: 24px;
+                margin-bottom: 15px;
+            }
+            
+            .content {
+                font-size: 13px;
+                line-height: 1.6;
+            }
+            
+            .export-btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .title {
+                font-size: 20px;
+            }
+            
+            .content {
+                font-size: 12px;
+            }
+        }
+
+        .stats span {
+            font-weight: bold;
+            color: #3498db;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="content">
+        <h1 class="title">人生已完成清单</h1>
+        <div class="content">
+            <span class="item">送礼物</span>
+            <span class="item">被送礼物</span>
+            <span class="item">暗恋</span>
+            <span class="item">明恋</span>
+            <span class="item">失恋</span>
+            <span class="item">表白</span>
+            <span class="item">被表白</span>
+            <span class="item">留长发</span>
+            <span class="item">剪短发</span>
+            <span class="item">染发</span>
+            <span class="item">漂发</span>
+            <span class="item">烫发</span>
+            <span class="item">化妆</span>
+            <span class="item">做美甲</span>
+            <span class="item">放下一个人</span>
+            <span class="item">有过遗憾</span>
+            <span class="item">爱而不得</span>
+            <span class="item">双向奔赴</span>
+            <span class="item">当海王</span>
+            <span class="item">拒绝他人表白</span>
+            <span class="item">表白被拒</span>
+            <span class="item">被渣</span>
+            <span class="item">犯过傻</span>
+            <span class="item">装糊涂</span>
+            <span class="item">犯花痴</span>
+            <span class="item">迟到</span>
+            <span class="item">旷课</span>
+            <span class="item">上课睡觉</span>
+            <span class="item">打架被叫家长</span>
+            <span class="item">去酒吧</span>
+            <span class="item">和朋友去KTV</span>
+            <span class="item">断片</span>
+            <span class="item">失眠</span>
+            <span class="item">睡一天</span>
+            <span class="item">吵架</span>
+            <span class="item">绝交</span>
+            <span class="item">晚上一个人哭</span>
+            <span class="item">献血</span>
+            <span class="item">住院</span>
+            <span class="item">做手术</span>
+            <span class="item">晕倒</span>
+            <span class="item">会做饭</span>
+            <span class="item">做一桌菜</span>
+            <span class="item">做饭给家人</span>
+            <span class="item">做甜品给喜欢的人</span>
+            <span class="item">有超过10年的好朋友</span>
+            <span class="item">有个无条件可信任的朋友</span>
+            <span class="item">买花</span>
+            <span class="item">被送花</span>
+            <span class="item">给自己买礼物</span>
+            <span class="item">通宵补作业</span>
+            <span class="item">一个人散步</span>
+            <span class="item">夜跑</span>
+            <span class="item">深夜敞心</span>
+            <span class="item">向陌生人吐露心声</span>
+            <span class="item">一个人出去吃饭</span>
+            <span class="item">一个人看电影</span>
+            <span class="item">摄影</span>
+            <span class="item">一个人去酒吧</span>
+            <span class="item">一个人过生日</span>
+            <span class="item">一个人逛超市</span>
+            <span class="item">一个人去图书馆</span>
+            <span class="item">一个人看病</span>
+            <span class="item">一个人去唱歌</span>
+            <span class="item">赴死过</span>
+            <span class="item">一个人出门远</span>
+            <span class="item">一个人在外难过</span>
+            <span class="item">给自己写信</span>
+            <span class="item">出国</span>
+            <span class="item">一个人旅游</span>
+            <span class="item">跟朋友旅游</span>
+            <span class="item">拥有要好的异性朋友</span>
+            <span class="item">谈恋爱</span>
+            <span class="item">考试不及格</span>
+            <span class="item">考试第一名</span>
+            <span class="item">当班干部</span>
+            <span class="item">竞选学生会</span>
+            <span class="item">上电视</span>
+            <span class="item">上报纸</span>
+            <span class="item">登台演出</span>
+            <span class="item">主持节目</span>
+            <span class="item">演讲</span>
+            <span class="item">野性消费</span>
+            <span class="item">被雪糕刺客伤过</span>
+            <span class="item">被老师点名表扬</span>
+            <span class="item">被老师点名批评</span>
+            <span class="item">全校表扬</span>
+            <span class="item">被背叛</span>
+            <span class="item">被伤害</span>
+            <span class="item">被坚定选择</span>
+            <span class="item">获奖</span>
+            <span class="item">学一种外语</span>
+            <span class="item">写论文</span>
+            <span class="item">写书</span>
+            <span class="item">写诗</span>
+            <span class="item">写日记</span>
+            <span class="item">写剧本</span>
+            <span class="item">写歌</span>
+            <span class="item">拍微片</span>
+            <span class="item">参加比赛</span>
+            <span class="item">拍写真</span>
+            <span class="item">买相机</span>
+            <span class="item">会一种乐器</span>
+            <span class="item">有过超过5年的兴趣爱好</span>
+            <span class="item">参加志愿活动</span>
+            <span class="item">自己一个人住宾馆</span>
+            <span class="item">看鬼片</span>
+            <span class="item">去密室</span>
+            <span class="item">去鬼屋</span>
+            <span class="item">去游乐场</span>
+            <span class="item">去看现场演唱会</span>
+            <span class="item">去音乐节</span>
+            <span class="item">偶遇明星</span>
+            <span class="item">去签售会</span>
+            <span class="item">在图书馆待一天</span>
+            <span class="item">兼职</span>
+            <span class="item">打工</span>
+            <span class="item">看画展</span>
+            <span class="item">捐款</span>
+            <span class="item">追剧</span>
+            <span class="item">释怀</span>
+            <span class="item">失望</span>
+            <span class="item">淋雨</span>
+            <span class="item">种花</span>
+            <span class="item">养宠物</span>
+            <span class="item">泡温泉</span>
+            <span class="item">跳伞</span>
+            <span class="item">坐过山车</span>
+            <span class="item">蹦极</span>
+            <span class="item">骑马</span>
+            <span class="item">卡丁车</span>
+            <span class="item">攀岩</span>
+            <span class="item">游泳</span>
+            <span class="item">滑雪</span>
+            <span class="item">滑冰</span>
+            <span class="item">早泳</span>
+            <span class="item">滑板</span>
+            <span class="item">去野炊</span>
+            <span class="item">登山</span>
+            <span class="item">看雪</span>
+            <span class="item">看海</span>
+            <span class="item">看日出</span>
+            <span class="item">看日落</span>
+            <span class="item">拿驾照</span>
+            <span class="item">自驾游</span>
+            <span class="item">给父母买衣服</span>
+            <span class="item">当伴娘/伴郎</span>
+            <span class="item">摆地摊</span>
+            <span class="item">和同学打水仗</span>
+            <span class="item">社团活动</span>
+            <span class="item">组建社团</span>
+            <span class="item">写信</span>
+            <span class="item">独自坐飞机</span>
+            <span class="item">拼拼图</span>
+            <span class="item">办生日会</span>
+            <span class="item">健身</span>
+            <span class="item">买名牌</span>
+            <span class="item">开网店</span>
+            <span class="item">练字</span>
+            <span class="item">沉迷游戏</span>
+            <span class="item">拍毕业照</span>
+            <span class="item">面试成功</span>
+            <span class="item">放孔明灯</span>
+            <span class="item">逛小吃街</span>
+            <span class="item">和网友见面</span>
+            <span class="item">发表成果</span>
+            <span class="item">买唱片</span>
+            <span class="item">异地恋</span>
+            <span class="item">异国恋</span>
+            <span class="item">认识不同国籍的人</span>
+            <span class="item">创业</span>
+            <span class="item">看极光</span>
+            <span class="item">进公司工作</span>
+            <span class="item">做未来规划</span>
+            <span class="item">搬家</span>
+            <span class="item">一个人租房</span>
+            <span class="item">转学</span>
+            <span class="item">被骗</span>
+            <span class="item">撒谎</span>
+            <span class="item">改掉一个坏习惯</span>
+            <span class="item">加入校队</span>
+            <span class="item">坐摩天轮</span>
+            <span class="item">在朋友家过夜</span>
+            <span class="item">墙长一项运动</span>
+            <span class="item">谈过一场刻骨铭心的恋爱</span>
+        </div>
+        
+        <div class="export-section">
+            <div class="stats">
+                已完成：<span id="selectedCount">0</span> 项 / 总共：<span id="totalCount">0</span> 项
+            </div>
+            <button class="export-btn" onclick="exportAsImage()">导出为图片</button>
+        </div>
+    </div>
+
+    <script>
+        // 获取所有可点击的项目
+        const items = document.querySelectorAll('.item');
+        const selectedCountEl = document.getElementById('selectedCount');
+        const totalCountEl = document.getElementById('totalCount');
+
+        // 初始化统计
+        totalCountEl.textContent = items.length;
+
+        // 为每个项目添加点击事件
+        items.forEach(item => {
+            item.addEventListener('click', function() {
+                this.classList.toggle('selected');
+                updateStats();
+            });
+        });
+
+        // 更新统计信息
+        function updateStats() {
+            const selectedItems = document.querySelectorAll('.item.selected');
+            selectedCountEl.textContent = selectedItems.length;
+        }
+
+        // 导出为图片功能
+        function exportAsImage() {
+            const content = document.getElementById('content');
+            
+            // 临时隐藏导出按钮
+            const exportSection = content.querySelector('.export-section');
+            exportSection.style.display = 'none';
+            
+            // 使用html2canvas将内容转换为canvas
+            html2canvas(content, {
+                backgroundColor: '#ffffff',
+                scale: 2, // 提高图片质量
+                useCORS: true,
+                allowTaint: true,
+                width: content.offsetWidth,
+                height: content.offsetHeight
+            }).then(canvas => {
+                // 恢复导出按钮显示
+                exportSection.style.display = 'block';
+                
+                // 创建下载链接
+                const link = document.createElement('a');
+                link.download = '人生已完成清单.png';
+                link.href = canvas.toDataURL('image/png');
+                
+                // 触发下载
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }).catch(error => {
+                // 恢复导出按钮显示
+                exportSection.style.display = 'block';
+                console.error('导出图片失败:', error);
+                alert('导出图片失败，请检查浏览器兼容性或网络连接');
+            });
+        }
+
+        // 添加键盘快捷键支持
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && e.key === 's') {
+                e.preventDefault();
+                exportAsImage();
+            }
+        });
+
+        // 添加双击全选功能
+        document.querySelector('.title').addEventListener('dblclick', function() {
+            items.forEach(item => {
+                if (!item.classList.contains('selected')) {
+                    item.classList.add('selected');
+                }
+            });
+            updateStats();
+        });
+
+        // 添加右键清除所有选择功能
+        document.addEventListener('contextmenu', function(e) {
+            if (e.target.classList.contains('item')) {
+                e.preventDefault();
+                items.forEach(item => {
+                    item.classList.remove('selected');
+                });
+                updateStats();
+            }
+        });
+    </script>
+    
+    <!-- 引入html2canvas库用于导出图片 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</body>
+</html>
